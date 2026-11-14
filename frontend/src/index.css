@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: 2px solid var(--mantine-color-indigo-6);
+  outline-offset: 2px;
+  border-radius: var(--mantine-radius-sm);
+}
+
+/* Mantine's default dimmed/placeholder text (gray.6/gray.5) fail WCAG AA on
+   white (~3.2:1 / ~2.1:1). Overriding the semantic variables themselves,
+   not the raw gray palette, fixes this on light surfaces only, so other
+   gray.5/gray.6 usages (e.g. the dark sidebar below) keep their original,
+   already-AA-compliant contrast. */
+:root[data-mantine-color-scheme='light'] {
+  --mantine-color-dimmed: #6b7280;
+  --mantine-color-placeholder: #707680;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Sidebar nav links: custom hover/active states for a dark navbar,
+   which Mantine's NavLink (designed for light surfaces) can't express via props alone. */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--mantine-radius-md);
+  color: var(--mantine-color-gray-5);
+  text-decoration: none;
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--mantine-color-white);
+}
+
+.sidebar-link[data-active='true'] {
+  background-color: rgba(99, 102, 241, 0.18);
+  color: var(--mantine-color-white);
+  box-shadow: inset 3px 0 0 0 var(--mantine-color-indigo-4);
+}
+
+.sidebar-link svg {
+  flex-shrink: 0;
+}
