@@ -50,6 +50,25 @@ export interface Borrower {
   status: BorrowerStatus
 }
 
+export interface ApiBorrower {
+  id: number
+  full_name: string
+  email: string
+  phone: string
+  address: string
+  status: BorrowerStatus
+  created_at: string
+  updated_at: string
+}
+
+export interface ApiBorrowerListResponse {
+  items: ApiBorrower[]
+  total: number
+  page: number
+  page_size: number
+  total_pages: number
+}
+
 export interface SummaryStat {
   id: string
   label: string
